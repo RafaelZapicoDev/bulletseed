@@ -542,8 +542,16 @@ class _AppState extends State<App> {
                         transformationConfig: FlTransformationConfig(),
                         LineChartData(
                           titlesData: FlTitlesData(
-                              topTitles: AxisTitles(axisNameSize: 0),
-                              rightTitles: AxisTitles(axisNameSize: 0)),
+                            topTitles: AxisTitles(axisNameSize: 0),
+                            rightTitles: AxisTitles(axisNameSize: 0),
+                            bottomTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                              showTitles: true,
+                              reservedSize: 32,
+                              interval: 1,
+                              getTitlesWidget: bottomTitleWidgets,
+                            )),
+                          ),
                           backgroundColor: Colors.white,
                           minX: 1,
                           maxX: 12,
@@ -681,7 +689,7 @@ class _AppState extends State<App> {
                         builder: (context, child, value) => GestureDetector(
                           child: Center(
                             child: Text(
-                              "${(value * 100).toInt()}",
+                              "${(value * 100).toInt()}%",
                               style: TextStyle(
                                 color: Colors.blueGrey,
                                 fontWeight: FontWeight.bold,
@@ -876,6 +884,60 @@ class _AppState extends State<App> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget bottomTitleWidgets(double value, TitleMeta meta) {
+    const style = TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 10,
+    );
+    Widget text;
+    switch (value.toInt()) {
+      case 1:
+        text = const Text('JAN', style: style);
+        break;
+      case 2:
+        text = const Text('FEV', style: style);
+        break;
+      case 3:
+        text = const Text('MAR', style: style);
+        break;
+      case 4:
+        text = const Text('ABR', style: style);
+        break;
+      case 5:
+        text = const Text('MAI', style: style);
+        break;
+      case 6:
+        text = const Text('JUN', style: style);
+        break;
+      case 7:
+        text = const Text('JUL', style: style);
+        break;
+      case 8:
+        text = const Text('AGO', style: style);
+        break;
+      case 9:
+        text = const Text('SET', style: style);
+        break;
+      case 10:
+        text = const Text('OUT', style: style);
+        break;
+      case 11:
+        text = const Text('NOV', style: style);
+        break;
+      case 12:
+        text = const Text('DEZ', style: style);
+        break;
+      default:
+        text = const Text('MÊS?', style: style);
+    }
+
+    return SideTitleWidget(
+      meta: meta,
+      space: 10,
+      child: text,
     );
   }
 }
