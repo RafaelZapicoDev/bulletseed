@@ -1,3 +1,4 @@
+import 'package:bulletseed/graf1.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
@@ -237,6 +238,7 @@ class _AppState extends State<App> {
                     ),
                   ],
                 ),
+                // Graf1(),
                 Column(
                   children: [
                     SizedBox(
