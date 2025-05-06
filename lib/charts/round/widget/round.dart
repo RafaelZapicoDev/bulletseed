@@ -45,7 +45,7 @@ class RoundChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 25,
+      spacing: 20,
       children: [
         RoundChartHeader(
           modality: modality,
@@ -66,8 +66,8 @@ class RoundChart extends StatelessWidget {
         RoundOverviewChart(
           attempts: attempts,
           hitColor: Colors.teal,
-          lostColor: Colors.redAccent,
-          secondShot: Colors.amberAccent,
+          lostColor: Colors.red,
+          secondShot: Colors.amber,
           subtitleColor: Colors.blueGrey,
         )
       ],

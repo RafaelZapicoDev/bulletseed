@@ -34,13 +34,88 @@ class WidgetTest extends StatelessWidget {
                     // reaction: 3,
                     direction: Direction.northeast),
                 Attempt(
-                    hit: false,
+                    hit: true,
                     secondCartBridge: false,
                     // reaction: 3,
                     direction: Direction.northeast),
                 Attempt(
                     hit: true,
                     secondCartBridge: true,
+                    // reaction: 3,
+                    direction: Direction.northwest),
+                Attempt(
+                    hit: false,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northwest),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northwest),
+                Attempt(
+                    hit: false,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northwest),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: true,
+                    // reaction: 3,
+                    direction: Direction.northwest),
+                Attempt(
+                    hit: false,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northwest),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
+                    // reaction: 3,
+                    direction: Direction.northeast),
+                Attempt(
+                    hit: true,
+                    secondCartBridge: false,
                     // reaction: 3,
                     direction: Direction.northwest),
                 Attempt(
@@ -65,17 +140,7 @@ class WidgetTest extends StatelessWidget {
                     direction: Direction.northeast),
                 Attempt(
                     hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
                     secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
                     // reaction: 3,
                     direction: Direction.northwest),
                 Attempt(
@@ -84,75 +149,10 @@ class WidgetTest extends StatelessWidget {
                     // reaction: 3,
                     direction: Direction.northeast),
                 Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
                     hit: true,
                     secondCartBridge: false,
                     // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
+                    direction: Direction.south),
               ],
               isFarenheight: false,
             ),

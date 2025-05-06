@@ -23,7 +23,7 @@ class RoundOverviewChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 450,
-      height: 100,
+      height: 90,
       child: BarChart(
         duration: const Duration(seconds: 1),
         curve: Curves.fastLinearToSlowEaseIn,
@@ -50,21 +50,17 @@ class RoundOverviewChart extends StatelessWidget {
                 x: index + 1,
                 barRods: [
                   BarChartRodData(
-                      width: 14,
-                      color: attempts[index].hit ? hitColor : lostColor,
-                      borderRadius: BorderRadius.all(
-                        Radius.zero,
-                      ),
-                      toY: 1,
-                      rodStackItems: [
-                        BarChartRodStackItem(
-                          .7,
-                          1,
-                          attempts[index].secondCartBridge
-                              ? secondShot
-                              : Colors.transparent,
-                        )
-                      ]),
+                    width: 16,
+                    color: attempts[index].hit
+                        ? attempts[index].secondCartBridge
+                            ? secondShot
+                            : hitColor
+                        : lostColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.zero,
+                    ),
+                    toY: 1,
+                  ),
                 ],
               );
             },
@@ -79,23 +75,11 @@ class RoundOverviewChart extends StatelessWidget {
 
     Widget icon;
 
-    if (intValue >= 1 && intValue <= 25) {
-      if (intValue % 2 == 0) {
-        icon = Icon(
-          CupertinoIcons.arrow_up_right,
-          color: Colors.blueGrey,
-          size: 20,
-        );
-      } else {
-        icon = Icon(
-          CupertinoIcons.arrow_up_left,
-          color: Colors.blueGrey,
-          size: 20,
-        );
-      }
-    } else {
-      icon = const Text('?');
-    }
+    icon = Icon(
+      getDirectionIcon(attempts[intValue - 1].direction),
+      color: Colors.blueGrey,
+      size: 20,
+    );
 
     return SideTitleWidget(
       meta: meta,
@@ -104,9 +88,23 @@ class RoundOverviewChart extends StatelessWidget {
     );
   }
 
+  IconData getDirectionIcon(Direction direction) {
+    return switch (direction) {
+      Direction.north => CupertinoIcons.arrow_up,
+      Direction.south => CupertinoIcons.arrow_down,
+      Direction.east => CupertinoIcons.arrow_right,
+      Direction.west => CupertinoIcons.arrow_left,
+      Direction.northeast => CupertinoIcons.arrow_up_left,
+      Direction.northwest => CupertinoIcons.arrow_up_right,
+      Direction.southeast => CupertinoIcons.arrow_down_right,
+      Direction.southwest => CupertinoIcons.arrow_down_left,
+    };
+  }
+
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      fontWeight: FontWeight.bold,
+    final style = TextStyle(
+      color: subtitleColor,
+      fontWeight: FontWeight.w600,
       fontSize: 11,
     );
 
@@ -116,7 +114,7 @@ class RoundOverviewChart extends StatelessWidget {
     if (intValue >= 1 && intValue <= value) {
       text = Text('$intValue', style: style);
     } else {
-      text = const Text('?', style: style);
+      text = Text('?', style: style);
     }
 
     return SideTitleWidget(
