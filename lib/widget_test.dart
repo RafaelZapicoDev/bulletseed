@@ -1,6 +1,6 @@
 import 'package:bulletseed/charts/model/attempt.dart';
 import 'package:bulletseed/charts/round/widget/round.dart';
-import 'package:bulletseed/charts/sonar/widget/sonar.dart';
+import 'package:bulletseed/charts/map/widget/map.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -216,22 +216,25 @@ class App extends StatelessWidget {
                   headerForegroundColor: Colors.blueGrey,
                   overviewSubtitleColor: Colors.blueGrey,
                 ),
-                SonarChart(
+                MapChart(
+                  shootingAreaStartColor: Colors.teal,
                   attempt: Attempt(
-                      x: 60,
-                      y: 40,
+                      x: 20,
+                      y: 30,
                       hit: true,
                       secondCartBridge: false,
                       direction: Direction.northeast),
-                  fieldWidthX: 80,
-                  fieldHeightY: 55,
+                  fieldWidthX: 25,
+                  fieldHeightY: 45,
                   shootingAreaStart: 15,
                   subtitleColor: Colors.blueGrey.shade600,
                   borderColor: Colors.blueGrey.shade600,
                   width: double.infinity,
                   height: 300,
-                  pathColor: Colors.teal.shade700,
+                  pathColor: Colors.blueGrey.shade600,
+                  targetColor: Colors.teal,
                   backgroundColor: Colors.white,
+                  targetSize: 12,
                 )
               ],
             ),

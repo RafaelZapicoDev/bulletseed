@@ -2,19 +2,22 @@ import 'package:bulletseed/charts/model/attempt.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class SonarChart extends StatelessWidget {
+class MapChart extends StatelessWidget {
   final Attempt attempt;
   final Color subtitleColor;
   final Color borderColor;
   final Color backgroundColor;
+  final Color shootingAreaStartColor;
   final Color pathColor;
+  final Color targetColor;
   final double width;
+  final double targetSize;
   final double height;
   final double fieldWidthX;
   final double fieldHeightY;
   final double shootingAreaStart;
 
-  const SonarChart({
+  const MapChart({
     super.key,
     required this.attempt,
     required this.fieldWidthX,
@@ -26,6 +29,9 @@ class SonarChart extends StatelessWidget {
     required this.pathColor,
     required this.backgroundColor,
     required this.borderColor,
+    required this.targetSize,
+    required this.targetColor,
+    required this.shootingAreaStartColor,
   });
 
   @override
@@ -40,10 +46,17 @@ class SonarChart extends StatelessWidget {
             duration: const Duration(seconds: 1),
             transformationConfig: FlTransformationConfig(),
             LineChartData(
+              clipData: FlClipData.all(),
               borderData: FlBorderData(
-                  border:
-                      Border.fromBorderSide(BorderSide(color: borderColor))),
-              gridData: FlGridData(show: false),
+                border: Border.fromBorderSide(
+                  BorderSide(
+                    color: borderColor,
+                  ),
+                ),
+              ),
+              gridData: FlGridData(
+                show: false,
+              ),
               titlesData: FlTitlesData(
                 topTitles: AxisTitles(
                   sideTitles: SideTitles(
@@ -77,19 +90,50 @@ class SonarChart extends StatelessWidget {
               ),
               backgroundColor: backgroundColor,
               minX: 0,
-              maxX: 8,
-              minY: 20,
-              maxY: 60,
+              maxX: fieldWidthX,
+              minY: 0,
+              maxY: fieldHeightY,
               lineBarsData: [
                 LineChartBarData(
-                  dashArray: [6, 6],
+                  dashArray: [
+                    6,
+                    6,
+                  ],
                   color: pathColor,
                   show: true,
-                  dotData: FlDotData(show: false),
+                  dotData: FlDotData(
+                    show: false,
+                  ),
                   spots: [
-                    FlSpot(4, 20),
-                    FlSpot(6, 50),
+                    FlSpot(
+                      fieldWidthX / 2,
+                      0,
+                    ),
+                    FlSpot(
+                      attempt.x!,
+                      attempt.y!,
+                    ),
                   ],
+                ),
+                LineChartBarData(
+                  color: shootingAreaStartColor,
+                  show: true,
+                  dotData: FlDotData(
+                    show: false,
+                  ),
+                  spots: [
+                    FlSpot(0, shootingAreaStart),
+                    FlSpot(
+                      fieldWidthX,
+                      shootingAreaStart,
+                    ),
+                  ],
+                  belowBarData: BarAreaData(
+                    show: true,
+                    color: shootingAreaStartColor.withAlpha(
+                      25,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -99,7 +143,8 @@ class SonarChart extends StatelessWidget {
             duration: const Duration(seconds: 1),
             transformationConfig: FlTransformationConfig(),
             ScatterChartData(
-              minY: shootingAreaStart,
+              gridData: FlGridData(verticalInterval: 2.5),
+              minY: 0,
               minX: 0,
               maxX: fieldWidthX,
               maxY: fieldHeightY,
@@ -139,12 +184,25 @@ class SonarChart extends StatelessWidget {
                 ScatterSpot(
                   attempt.x!,
                   attempt.y!,
-                  dotPainter: FlDotCrossPainter(),
+                  dotPainter: FlDotCrossPainter(
+                    size: targetSize,
+                    color: targetColor,
+                  ),
                   show: true,
                 ),
               ],
             ),
-          )
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Icon(
+              Icons.person,
+              color: subtitleColor,
+              size: 20,
+            ),
+          ),
         ],
       ),
     );
@@ -179,10 +237,10 @@ class SonarChart extends StatelessWidget {
     final int intValue = value.toInt();
     Widget text;
 
-    if (intValue == 4) {
+    if (intValue == meta.max ~/ 2) {
       text = Icon(
         Icons.person,
-        color: subtitleColor,
+        color: Colors.transparent,
         size: 20,
       );
     } else {
@@ -199,7 +257,7 @@ class SonarChart extends StatelessWidget {
     final int intValue = value.toInt();
     Widget text;
 
-    if (intValue == 4) {
+    if (intValue == (meta.max / 2).round()) {
       text = Icon(
         Icons.person,
         color: Colors.transparent,
@@ -222,36 +280,28 @@ class SonarChart extends StatelessWidget {
       fontSize: 11,
     );
 
-    int? displayValue;
+    double middle = meta.max / 2;
+    double displayValue;
 
-    if (value >= 0 && value <= 4) {
-      displayValue = (40 - (value * 10)).round();
-    } else if (value > 4 && value <= 8) {
-      displayValue = ((value - 4) * 10).round();
-    } else if (value == 4) {
-      displayValue = 0;
+    if (value < middle) {
+      displayValue = meta.max - (value * 2);
+    } else {
+      displayValue = (value - middle) * 2;
     }
 
-    Widget text;
-    if (displayValue != null) {
-      text = Text('$displayValue', style: style);
-    } else {
-      text = Text('?', style: style);
+    int rounded = displayValue.round();
+
+    if (rounded % 5 != 0 && rounded != meta.max.round()) {
+      return const SizedBox.shrink();
     }
 
     return SideTitleWidget(
       meta: meta,
-      child: text,
+      child: Text(rounded.toString(), style: style),
     );
   }
 
   Widget topTitleWidgets2(double value, TitleMeta meta) {
-    const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      color: Colors.transparent,
-      fontSize: 11,
-    );
-
     int? displayValue;
 
     if (value >= 0 && value <= 4) {
@@ -264,9 +314,15 @@ class SonarChart extends StatelessWidget {
 
     Widget text;
     if (displayValue != null) {
-      text = Text('$displayValue', style: style);
+      text = Text(
+        '$displayValue',
+        style: TextStyle(color: Colors.transparent),
+      );
     } else {
-      text = const Text('?', style: style);
+      text = const Text(
+        ' ',
+        style: TextStyle(color: Colors.transparent),
+      );
     }
 
     return SideTitleWidget(
