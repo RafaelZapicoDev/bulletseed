@@ -1,9 +1,10 @@
-import 'package:bulletseed/charts/round/model/attempt.dart';
+import 'package:bulletseed/charts/model/attempt.dart';
 import 'package:bulletseed/charts/round/widget/round.dart';
+import 'package:bulletseed/charts/sonar/widget/sonar.dart';
 import 'package:flutter/material.dart';
 
-class WidgetTest extends StatelessWidget {
-  const WidgetTest({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,146 +16,224 @@ class WidgetTest extends StatelessWidget {
           child: SizedBox(
             width: 500,
             height: 600,
-            child: RoundChart(
-              title: "Treinamento Competição",
-              weather: Weather.clear,
-              temperature: 22,
-              humidity: 82,
-              windVelocity: 11,
-              athlete: "Ygona Moura Silva",
-              location: "Juiz de Fora - Minas Gerais",
-              modality: "trap",
-              id: "1",
-              uid: "213",
-              datetime: DateTime.now(),
-              attempts: <Attempt>[
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: true,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: false,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northwest),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.northeast),
-                Attempt(
-                    hit: true,
-                    secondCartBridge: false,
-                    // reaction: 3,
-                    direction: Direction.south),
+            child: Column(
+              spacing: 20,
+              children: [
+                RoundChart(
+                  title: "Treinamento Competição",
+                  weather: Weather.clear,
+                  temperature: 22,
+                  humidity: 82,
+                  windVelocity: 11,
+                  athlete: "Ygona Moura Silva",
+                  location: "Juiz de Fora - Minas Gerais",
+                  modality: "trap",
+                  id: "1",
+                  uid: "213",
+                  datetime: DateTime.now(),
+                  attempts: <Attempt>[
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: true,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: false,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: false,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: true,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: false,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: false,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: true,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: false,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northwest),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.northeast),
+                    Attempt(
+                        x: 5,
+                        y: 6,
+                        hit: true,
+                        secondCartBridge: false,
+                        // reaction: 3,
+                        direction: Direction.south),
+                  ],
+                  isFarenheight: false,
+                  overviewHitColor: Colors.teal,
+                  overviewLostColor: Colors.red,
+                  overviewSecondShotColor: Colors.amber,
+                  headerBackgroundColor: Colors.transparent,
+                  headerForegroundColor: Colors.blueGrey,
+                  overviewSubtitleColor: Colors.blueGrey,
+                ),
+                SonarChart(
+                  attempt: Attempt(
+                      x: 60,
+                      y: 40,
+                      hit: true,
+                      secondCartBridge: false,
+                      direction: Direction.northeast),
+                  fieldWidthX: 80,
+                  fieldHeightY: 55,
+                  shootingAreaStart: 15,
+                  subtitleColor: Colors.blueGrey.shade600,
+                  borderColor: Colors.blueGrey.shade600,
+                  width: double.infinity,
+                  height: 300,
+                  pathColor: Colors.teal.shade700,
+                  backgroundColor: Colors.white,
+                )
               ],
-              isFarenheight: false,
             ),
           ),
         ),

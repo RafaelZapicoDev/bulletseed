@@ -3,7 +3,7 @@
 // das seguintes modalidades : Skeet, Trap,
 // Trap Olímpico e Compak
 
-import 'package:bulletseed/charts/round/model/attempt.dart';
+import 'package:bulletseed/charts/model/attempt.dart';
 import 'package:bulletseed/charts/round/widget/round_chart_header.dart';
 import 'package:bulletseed/charts/round/widget/round_overview.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +16,19 @@ class RoundChart extends StatelessWidget {
   final DateTime datetime;
   final String title;
   final Weather weather;
-  final double temperature;
   final bool isFarenheight;
   final double humidity;
+  final double temperature;
   final double windVelocity;
   final String athlete;
   final String location;
   final String modality;
+  final Color overviewHitColor;
+  final Color overviewLostColor;
+  final Color overviewSecondShotColor;
+  final Color overviewSubtitleColor;
+  final Color headerForegroundColor;
+  final Color headerBackgroundColor;
   final List<Attempt> attempts;
 
   const RoundChart({
@@ -40,6 +46,12 @@ class RoundChart extends StatelessWidget {
     required this.datetime,
     required this.attempts,
     required this.isFarenheight,
+    required this.overviewHitColor,
+    required this.overviewLostColor,
+    required this.overviewSecondShotColor,
+    required this.overviewSubtitleColor,
+    required this.headerForegroundColor,
+    required this.headerBackgroundColor,
   });
 
   @override
@@ -49,8 +61,8 @@ class RoundChart extends StatelessWidget {
       children: [
         RoundChartHeader(
           modality: modality,
-          foregroundColor: Colors.blueGrey,
-          backgroundColor: Colors.transparent,
+          foregroundColor: headerForegroundColor,
+          backgroundColor: headerBackgroundColor,
           id: id,
           uid: uid,
           datetime: datetime,
@@ -65,10 +77,10 @@ class RoundChart extends StatelessWidget {
         ),
         RoundOverviewChart(
           attempts: attempts,
-          hitColor: Colors.teal,
-          lostColor: Colors.red,
-          secondShot: Colors.amber,
-          subtitleColor: Colors.blueGrey,
+          hitColor: overviewHitColor,
+          lostColor: overviewLostColor,
+          secondShot: overviewSecondShotColor,
+          subtitleColor: overviewSubtitleColor,
         )
       ],
     );

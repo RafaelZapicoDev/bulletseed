@@ -1,7 +1,6 @@
-import 'package:bulletseed/charts/round/model/attempt.dart';
+import 'package:bulletseed/charts/model/attempt.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class RoundOverviewChart extends StatelessWidget {
   final Color hitColor;
@@ -77,7 +76,7 @@ class RoundOverviewChart extends StatelessWidget {
 
     icon = Icon(
       getDirectionIcon(attempts[intValue - 1].direction),
-      color: Colors.blueGrey,
+      color: subtitleColor,
       size: 20,
     );
 

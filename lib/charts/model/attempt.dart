@@ -1,19 +1,20 @@
-// [Attempt] é o model para tentativas
-
-import 'package:flutter/material.dart';
+// [Attempt] é o model para tentativas .
+// [Ideia] adicionar tempo de reação ?
 
 part 'direction.dart';
 
 class Attempt {
   final bool hit;
   final bool secondCartBridge;
-  // final DateTime reaction;
+  final double? x;
+  final double? y;
   final Direction direction;
 
   Attempt({
     required this.hit,
     required this.secondCartBridge,
-    // required this.reaction,
     required this.direction,
+    this.x,
+    this.y,
   });
 }
